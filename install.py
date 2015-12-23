@@ -3,8 +3,13 @@
 import subprocess, os, shutil
 from subprocess import check_call
 
-serviceFileName = 'page-distributor.service'
+NAME='page-distributor'
+
 projDir = os.path.dirname(os.path.realpath(__file__))
+
+check_call(['docker', 'build', '-t', NAME, projDir])
+
+serviceFileName = NAME + '.service'
 serviceFile = os.path.join(projDir, serviceFileName)
 serviceFileDest = os.path.join('/etc/systemd/system/', serviceFileName) 
 shutil.copy(serviceFile, serviceFileDest)
