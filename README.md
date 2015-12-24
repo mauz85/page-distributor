@@ -11,3 +11,6 @@ systemctl status page-distributor.service
 
 Check if container is running:
 docker ps
+
+## Connect to container
+docker exec -it page-distributor /bin/bash
