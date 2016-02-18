@@ -6,4 +6,8 @@ RUN a2enmod proxy
 RUN a2enmod proxy_http
 ADD pages/* /etc/apache2/sites-available/
 RUN service apache2 restart
-RUN a2ensite notstrommalters.ch.conf 
+RUN a2ensite notstrommalters.ch.conf
+RUN a2ensite bangoneshead.ch.conf
+RUN a2ensite hg.bangoneshead.ch.conf
+RUN a2ensite seafile.bangoneshead.ch.conf
+ 
