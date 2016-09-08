@@ -5,7 +5,12 @@ Requires=docker.service
 
 [Service]
 TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker rm page-distributor
 ExecStart=/usr/bin/docker run --rm --net=host -p 80:80 -p 443:443 --name page-distributor page-distributor /usr/sbin/apache2ctl -D FOREGROUND
+ExecStop=/usr/bin/docker stop page-distributor
+
+Restart=always
+RestartSec=2m
 
 [Install]
 WantedBy=multi-user.target
